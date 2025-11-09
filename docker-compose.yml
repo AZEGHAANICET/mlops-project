@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  iris-classifier:
+    build: .
+    container_name: iris-classifier
+    ports:
+      - "8000:8080"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount models and data if needed (or use DVC pull in container)
+      - ./models:/app/models:ro
+      - ./data:/app/data:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+

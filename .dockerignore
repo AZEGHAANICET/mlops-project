@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Documentation
+docs/_build/
+
+# Git
+.git/
+.gitignore
+
+# DVC
+.dvc/
+*.dvc
+
+# Data and models (should be pulled via DVC in production)
+data/*.csv
+models/*.joblib
+models/*.pkl
+!data/*.dvc
+!models/*.dvc
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# CI/CD
+.github/
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# README and docs
+README.md
+*.md
+
+# Tests
+tests/
+test_*.py
+
