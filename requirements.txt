@@ -1,3 +1,6 @@
 pandas
 scikit-learn
 dvc
+fastapi
+flake8
+pytest
