@@ -1,4 +1,4 @@
-name: Basic ML Code CI
+name: Basic ML Code CI MLOPS
 on:
   push:
     branches:
