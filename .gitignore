@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data and Models tracked by DVC
+data/*
+!data/.gitkeep
+
+models/*
+!models/.gitkeep
+
+
+.dvc/cache
