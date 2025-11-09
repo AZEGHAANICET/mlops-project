@@ -4,9 +4,11 @@ __pycache__/
 
 # Data and Models tracked by DVC
 data/*
+!data/*.dvc
 !data/.gitkeep
 
 models/*
+!models/*.dvc
 !models/.gitkeep
 .idea/*
 .idea
