@@ -142,6 +142,7 @@ mlops-anicet/
   ├── LICENSE               # Licence MIT
   ├── CHANGELOG.md          # Historique des versions
   ├── CONTRIBUTING.md       # Guide de contribution
+  ├── USAGE_MAKEFILE.md     # Guide d'utilisation du Makefile
   └── README.md             # Ce document ✨
 ```
 
@@ -197,10 +198,16 @@ dvc pull
 python src/train.py
 ```
 
-#### Option 2: Avec Make
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make train
+```
+
+#### Option 3: Avec PowerShell (Windows)
+
+```powershell
+.\run.ps1 train
 ```
 
 ---
@@ -215,11 +222,19 @@ make train
 uvicorn app:app --reload --host 0.0.0.0 --port 8000
 ```
 
-#### Option 2: Avec Make (recommandé)
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make run
 ```
+
+#### Option 3: Avec PowerShell (Windows - recommandé)
+
+```powershell
+.\run.ps1 run
+```
+
+**Note :** Sur Windows, `make` n'est pas installé par défaut. Utilisez le script PowerShell `run.ps1` à la place. Voir la section [Utilisation sur Windows](#-utilisation-sur-windows) ci-dessous.
 
 L'application sera accessible à l'adresse : `http://localhost:8000`
 
@@ -268,10 +283,16 @@ curl http://localhost:8000/metrics
 docker build -t iris-classifier .
 ```
 
-#### Option 2: Avec Make
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make docker-build
+```
+
+#### Option 3: Avec PowerShell (Windows)
+
+```powershell
+.\run.ps1 docker-build
 ```
 
 ### Exécution du container
@@ -282,10 +303,16 @@ make docker-build
 docker run -p 8000:8080 iris-classifier
 ```
 
-#### Option 2: Avec Make
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make docker-run
+```
+
+#### Option 3: Avec PowerShell (Windows)
+
+```powershell
+.\run.ps1 docker-run
 ```
 
 ### Utilisation avec Docker Compose
@@ -296,16 +323,36 @@ make docker-run
 docker-compose up -d
 ```
 
-#### Option 2: Avec Make
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make docker-compose-up
 ```
 
+#### Option 3: Avec PowerShell (Windows)
+
+```powershell
+.\run.ps1 docker-up
+```
+
 Pour arrêter les services :
+
+#### Option 1: Avec docker-compose directement
+
+```bash
+docker-compose down
+```
+
+#### Option 2: Avec Make (Linux/macOS)
 
 ```bash
 make docker-compose-down
+```
+
+#### Option 3: Avec PowerShell (Windows)
+
+```powershell
+.\run.ps1 docker-down
 ```
 
 L'application sera accessible à `http://localhost:8000`
@@ -395,6 +442,73 @@ L'application inclut une gestion robuste des erreurs :
 - Gestion des erreurs de modèle
 - Messages d'erreur clairs pour l'utilisateur
 - Logging des erreurs pour le débogage
+
+---
+
+## 🪟 Utilisation sur Windows
+
+### Pourquoi `make` ne fonctionne pas ?
+
+`make` est un outil Unix/Linux qui n'est **pas installé par défaut sur Windows**. Vous avez plusieurs options :
+
+### ✅ Solution recommandée : Utiliser le script PowerShell
+
+Un script PowerShell `run.ps1` a été créé pour remplacer `make` sur Windows :
+
+```powershell
+# Voir toutes les commandes disponibles
+.\run.ps1 help
+
+# Installer les dépendances
+.\run.ps1 install
+
+# Lancer l'application
+.\run.ps1 run
+
+# Entraîner le modèle
+.\run.ps1 train
+
+# Lancer les tests
+.\run.ps1 test
+```
+
+### Autres options pour utiliser `make` sur Windows
+
+#### Option 1 : Installer Make via Chocolatey
+
+```powershell
+# Installer Chocolatey (si pas déjà installé)
+# Puis installer Make
+choco install make
+```
+
+#### Option 2 : Utiliser WSL (Windows Subsystem for Linux)
+
+```bash
+# Dans WSL
+sudo apt-get update
+sudo apt-get install make
+```
+
+#### Option 3 : Utiliser les commandes directement
+
+Au lieu de `make run`, utilisez directement :
+
+```powershell
+uvicorn app:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Voir [USAGE_MAKEFILE.md](USAGE_MAKEFILE.md) pour la liste complète des équivalents.**
+
+### Tableau de correspondance des commandes
+
+| Commande Make | Commande PowerShell | Commande directe |
+|---------------|---------------------|------------------|
+| `make install` | `.\run.ps1 install` | `pip install -r requirements.txt` |
+| `make run` | `.\run.ps1 run` | `uvicorn app:app --reload --host 0.0.0.0 --port 8000` |
+| `make train` | `.\run.ps1 train` | `python src/train.py` |
+| `make test` | `.\run.ps1 test` | `pytest` |
+| `make docker-build` | `.\run.ps1 docker-build` | `docker build -t iris-classifier .` |
 
 ---
 
