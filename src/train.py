@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-import pickle
+import joblib
 import json
 
 # Data Loading
@@ -28,8 +28,8 @@ print(f"Model Accuracy: {accuracy}")
 
 # Save the model and metrics
 os.makedirs("models", exist_ok=True)
-with open("models/iris.pkl", "wb") as f:
-    pickle.dump(model, f)
+with open("models/iris.joblib", "wb") as f:
+    joblib.dump(model, f)
 
 with open('metrics.json', 'w') as f:
     json.dump({'accuracy': accuracy}, f)

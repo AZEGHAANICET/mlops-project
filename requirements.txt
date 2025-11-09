@@ -4,3 +4,5 @@ dvc
 fastapi
 flake8
 pytest
+joblib
+uvicorn
