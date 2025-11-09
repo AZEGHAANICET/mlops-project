@@ -8,6 +8,9 @@ data/*
 
 models/*
 !models/.gitkeep
+.idea/*
+.idea
 
+.venv
 
 .dvc/cache
