@@ -548,7 +548,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 **Anicet**
 
-- Projet : [MLOps Iris Classifier](https://github.com/yourusername/mlops-anicet)
+- Projet : [MLOps Iris Classifier](https://github.com/AZEGHAANICET/mlops-project)
 
 ---
 
